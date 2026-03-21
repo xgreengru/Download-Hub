@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": "cl-1774123733058",
+    "date": "2026-02-21",
+    "version": "v1",
+    "title": "Initial release",
+    "items": [
+      "Simple download system",
+      "Simple card system"
+    ]
+  }
+]
