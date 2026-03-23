@@ -9,13 +9,22 @@
     "asset": "gn-math.zip"
   },
   {
-    "id": "tuffclient",
-    "tag": "CLIENT",
-    "name": "TuffClient",
-    "version": "1.0",
+    "id": "noah-s-tutoring",
+    "tag": "HTML",
+    "name": "Noah's Tutoring",
+    "version": "GitHub repo ver",
+    "fileType": "HTML",
+    "description": "Noah's Tutoring GitHub repo code but condensed for GitHub file upload limits.",
+    "asset": "noah's-tutoring.html"
+  },
+  {
+    "id": "ghost-link",
+    "tag": "ZIP",
+    "name": "Ghost Link",
+    "version": "5.2",
     "fileType": "ZIP",
-    "description": "Minecraft utility client packaged as a ZIP file.",
-    "asset": "TuffClient.zip"
+    "description": "Working AI and 1,000 games.",
+    "asset": "ghostlinkhub.zip"
   },
   {
     "id": "wurstclient-188",
@@ -25,6 +34,15 @@
     "fileType": "ZIP",
     "description": "Legacy Wurst client for Minecraft 1.8.8.",
     "asset": "WurstClient 1.8.8.zip"
+  },
+  {
+    "id": "tuffclient",
+    "tag": "CLIENT",
+    "name": "TuffClient",
+    "version": "1.0",
+    "fileType": "ZIP",
+    "description": "Minecraft utility client packaged as a ZIP file.",
+    "asset": "TuffClient.zip"
   },
   {
     "id": "messenger-20",
@@ -115,15 +133,6 @@
     "fileType": "ZIP",
     "description": "Over 2,000 games.",
     "asset": "Bees-Work-main.zip"
-  },
-  {
-    "id": "ghost-link",
-    "tag": "ZIP",
-    "name": "Ghost Link",
-    "version": "5.2",
-    "fileType": "ZIP",
-    "description": "Working AI and 1,000 games.",
-    "asset": "ghostlinkhub.zip"
   },
   {
     "id": "diesmos",
