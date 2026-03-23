@@ -8,5 +8,59 @@
       "Simple download system",
       "Simple card system"
     ]
+  },
+  {
+    "id": "cl-1774271758688",
+    "date": "2026-03-23",
+    "version": "v2",
+    "title": "Proxy update",
+    "items": [
+      "Added more downloads",
+      "Added go to proxy button"
+    ]
+  },
+  {
+    "id": "cl-1774272037290",
+    "date": "2026-03-23",
+    "version": "v3",
+    "title": "Aesthetics update",
+    "items": [
+      "Changed the appearance of the site",
+      "Added more games"
+    ]
+  },
+  {
+    "id": "cl-1774272114602",
+    "date": "2026-03-23",
+    "version": "v4",
+    "title": "Game Request Update",
+    "items": [
+      "Added game request form",
+      "Added more games",
+      "Added formspree api integration to game request form ui"
+    ]
+  },
+  {
+    "id": "cl-1774272200392",
+    "date": "2026-03-23",
+    "version": "v5",
+    "title": "SUPABASE integration",
+    "items": [
+      "Added Supabase integration",
+      "Added accurate review system based on SUPABASE data",
+      "Added accurate download count system based on supabase data"
+    ]
+  },
+  {
+    "id": "cl-1774272307448",
+    "date": "2026-03-23",
+    "version": "v6",
+    "title": "Quality of life",
+    "items": [
+      "Added go back to the top button",
+      "Added clean animations to card loading key frames",
+      "Added / to focus in search bar",
+      "Added changelog"
+    ]
   }
 ]
