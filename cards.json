@@ -196,5 +196,14 @@
     "fileType": "ZIP",
     "description": "WORKING Roblox, proxy, and movies",
     "asset": "GalaxyV6.html"
+  },
+  {
+    "id": "strongdog",
+    "tag": "CLIENT",
+    "name": "StrongDog",
+    "version": "1.0",
+    "fileType": "HTML",
+    "description": "StrongDog IS BACK",
+    "asset": "StrongDog.html"
   }
 ]
