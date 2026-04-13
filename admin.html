@@ -65,12 +65,21 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
 .divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
 .subsection-title{font-size:0.82rem;color:var(--muted);font-weight:600;margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.04em;}
 
-/* BANNER PREVIEW */
+/* BANNER */
 .banner-preview{padding:0.65rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;margin-top:0.75rem;}
 .banner-preview.blue  {background:rgba(88,101,242,0.12);border:1px solid rgba(88,101,242,0.35);color:#a0a8ff;}
 .banner-preview.accent{background:rgba(255,159,28,0.12);border:1px solid rgba(255,159,28,0.35);color:var(--warn);}
 .banner-preview.green {background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.35);color:#5dde8e;}
 .banner-preview.red   {background:rgba(231,76,60,0.12); border:1px solid rgba(231,76,60,0.35); color:#f08080;}
+
+/* TOGGLE */
+.toggle{position:relative;display:inline-block;width:42px;height:24px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:#2a3045;border-radius:24px;cursor:pointer;transition:background 0.2s;}
+.toggle-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:white;border-radius:50%;transition:transform 0.2s;}
+.toggle input:checked+.toggle-slider{background:var(--success);}
+.toggle input:checked+.toggle-slider::before{transform:translateX(18px);}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
 
 /* FORM FIELDS */
 .form-field{margin-bottom:0;}
@@ -82,52 +91,47 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
 .checkbox-field{display:flex;align-items:center;gap:0.6rem;margin-top:0.15rem;}
 .checkbox-field input[type="checkbox"]{width:16px;height:16px;accent-color:var(--success);cursor:pointer;}
 .checkbox-field label{font-size:0.88rem;color:var(--text);cursor:pointer;margin:0;}
-.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
 
-/* TOGGLE SWITCH */
-.toggle{position:relative;display:inline-block;width:42px;height:24px;flex-shrink:0;}
-.toggle input{opacity:0;width:0;height:0;}
-.toggle-slider{position:absolute;inset:0;background:#2a3045;border-radius:24px;cursor:pointer;transition:background 0.2s;}
-.toggle-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:white;border-radius:50%;transition:transform 0.2s;}
-.toggle input:checked+.toggle-slider{background:var(--success);}
-.toggle input:checked+.toggle-slider::before{transform:translateX(18px);}
-
-/* CARD LIST */
+/* CARD + CHANGELOG LISTS */
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
 .section-header h2{font-size:1.1rem;}
-.card-count{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:0.25rem 0.65rem;border-radius:999px;font-size:0.78rem;}
-.cards-list{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;}
+.item-count{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:0.25rem 0.65rem;border-radius:999px;font-size:0.78rem;}
 
-/* DRAGGABLE CARD */
-.admin-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0.9rem 1.1rem;display:flex;align-items:center;gap:0.85rem;transition:border-color 0.15s,box-shadow 0.15s;cursor:default;}
-.admin-card:hover{border-color:#2d3a52;}
-.admin-card.drag-over{border-top:3px solid var(--accent);margin-top:-2px;}
-.admin-card.dragging{opacity:0.45;box-shadow:0 16px 40px rgba(0,0,0,0.5);}
-.drag-handle{color:#3a4258;font-size:1.1rem;cursor:grab;padding:0.2rem;flex-shrink:0;user-select:none;line-height:1;}
+/* DRAG ROWS */
+.drag-list{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;}
+
+.drag-row{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:0.9rem 1.1rem;display:flex;align-items:center;gap:0.85rem;transition:border-color 0.15s,box-shadow 0.15s,opacity 0.15s;}
+.drag-row:hover{border-color:#2d3a52;}
+.drag-row.dragging{opacity:0.4;box-shadow:0 16px 40px rgba(0,0,0,0.5);}
+.drag-row.drag-over-top{border-top:3px solid var(--accent);}
+.drag-row.drag-over-bottom{border-bottom:3px solid var(--accent);}
+
+.drag-handle{color:#3a4258;font-size:1.1rem;cursor:grab;padding:0.2rem;flex-shrink:0;user-select:none;line-height:1;transition:color 0.15s;}
 .drag-handle:hover{color:var(--muted);}
 .drag-handle:active{cursor:grabbing;}
-.admin-card-info{flex:1;min-width:0;}
-.admin-card-info h4{font-size:0.92rem;margin-bottom:0.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.admin-card-meta{font-size:0.75rem;color:var(--muted);}
-.admin-card-tag{display:inline-block;background:rgba(255,159,28,0.12);color:var(--warn);padding:0.15rem 0.5rem;border-radius:999px;font-size:0.68rem;font-weight:700;margin-right:0.4rem;}
-.new-badge{display:inline-block;background:rgba(46,204,113,0.15);color:var(--success);padding:0.15rem 0.45rem;border-radius:999px;font-size:0.65rem;font-weight:700;}
-.admin-card-actions{display:flex;gap:0.4rem;flex-shrink:0;}
 
-/* FORM PANEL */
-#cardFormPanel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;display:none;animation:fadeUp 0.25s ease;}
-#cardFormPanel h3{font-size:1rem;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
+.row-info{flex:1;min-width:0;}
+.row-info h4{font-size:0.92rem;margin-bottom:0.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.row-info p{font-size:0.75rem;color:var(--muted);}
+.row-actions{display:flex;gap:0.4rem;flex-shrink:0;}
+
+.tag-pill{display:inline-block;padding:0.15rem 0.5rem;border-radius:999px;font-size:0.68rem;font-weight:700;margin-right:0.4rem;}
+.tag-card{background:rgba(255,159,28,0.12);color:var(--warn);}
+.tag-cl{background:rgba(88,101,242,0.15);color:#a0a8ff;border:1px solid rgba(88,101,242,0.3);}
+.new-badge{display:inline-block;background:rgba(46,204,113,0.15);color:var(--success);padding:0.15rem 0.45rem;border-radius:999px;font-size:0.65rem;font-weight:700;}
+
+/* FORM PANELS */
+.form-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;display:none;animation:fadeUp 0.25s ease;}
+.form-panel h3{font-size:1rem;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
 .form-grid .full{grid-column:1/-1;}
 .form-actions{display:flex;gap:0.75rem;margin-top:1.5rem;}
 
-/* CHANGELOG SECTION */
-.cl-entry{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.6rem;}
-.cl-entry-info h4{font-size:0.9rem;margin-bottom:0.15rem;}
-.cl-entry-info p{font-size:0.75rem;color:var(--muted);}
-.cl-version{display:inline-block;background:rgba(88,101,242,0.15);color:#a0a8ff;border:1px solid rgba(88,101,242,0.3);padding:0.15rem 0.5rem;border-radius:999px;font-size:0.68rem;font-weight:700;margin-right:0.4rem;}
+/* DRAG HINT */
+.drag-hint{font-size:0.75rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem;margin-bottom:0.75rem;opacity:0.7;}
 
-/* EMPTY STATE */
+/* EMPTY */
 .empty-state{text-align:center;padding:3rem;color:var(--muted);border:2px dashed var(--border);border-radius:14px;}
 .empty-state div{font-size:2rem;margin-bottom:0.5rem;}
 
@@ -184,13 +188,13 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
 
   <div class="main-content">
 
-    <!-- ===== GITHUB SETTINGS ===== -->
+    <!-- GITHUB SETTINGS -->
     <div class="settings-panel">
       <div class="settings-header" data-target="ghBody">
         <h3>⚙️ GitHub Settings</h3><span class="arrow">▼</span>
       </div>
       <div class="settings-body" id="ghBody">
-        <div class="settings-note">Required to publish changes. Generate a <strong>Fine-grained token</strong> or <strong>Classic token (repo scope)</strong> at GitHub → Settings → Developer Settings → Personal Access Tokens. Classic tokens are more reliable.</div>
+        <div class="settings-note">Required to publish changes. A <strong>Classic token (repo scope)</strong> is most reliable. Generate one at GitHub → Settings → Developer Settings → Personal Access Tokens.</div>
         <div class="settings-grid">
           <div class="form-field"><label>GitHub Username</label><input type="text" id="ghOwner" placeholder="GreenGrunblocked" /></div>
           <div class="form-field"><label>Repository Name</label><input type="text" id="ghRepo" placeholder="Download-Hub" /></div>
@@ -199,7 +203,6 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
         </div>
         <button class="btn-accent" id="saveGH">Save GitHub Settings</button>
         <div class="settings-status" id="ghStatus"></div>
-
         <hr class="divider">
         <div class="subsection-title">🔑 Change Admin Password</div>
         <div class="settings-grid">
@@ -211,7 +214,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
       </div>
     </div>
 
-    <!-- ===== SUPABASE SETTINGS ===== -->
+    <!-- SUPABASE SETTINGS -->
     <div class="settings-panel">
       <div class="settings-header" data-target="sbBody">
         <h3>🗄️ Supabase Settings <span style="color:var(--muted);font-size:0.78rem;font-weight:400">— ratings & download counts</span></h3><span class="arrow">▼</span>
@@ -219,7 +222,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
       <div class="settings-body" id="sbBody">
         <div class="settings-note">
           1. Create a free project at <strong>supabase.com</strong><br>
-          2. Run this SQL in your Supabase SQL Editor:<br><br>
+          2. Run this SQL in the SQL Editor:<br><br>
           <code>create table card_stats (card_id text primary key, download_count bigint default 0, rating_total bigint default 0, rating_count bigint default 0);</code><br>
           <code>alter table card_stats enable row level security;</code><br>
           <code>create policy "pub" on card_stats for all using (true) with check (true);</code><br>
@@ -237,7 +240,7 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
       </div>
     </div>
 
-    <!-- ===== ANNOUNCEMENT BANNER ===== -->
+    <!-- ANNOUNCEMENT BANNER -->
     <div class="settings-panel">
       <div class="settings-header" data-target="bannerBody">
         <h3>📢 Announcement Banner</h3><span class="arrow">▼</span>
@@ -264,23 +267,21 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
             </select>
           </div>
         </div>
-        <div id="bannerPreview" class="banner-preview blue" style="margin-top:0.5rem"></div>
-        <div style="margin-top:1rem">
-          <button class="btn-accent" id="saveBanner">Save Banner</button>
-        </div>
+        <div id="bannerPreview" class="banner-preview blue"></div>
+        <div style="margin-top:1rem"><button class="btn-accent" id="saveBanner">Save Banner</button></div>
         <div class="settings-status" id="bannerStatus"></div>
       </div>
     </div>
 
-    <!-- ===== CARD FORM ===== -->
-    <div id="cardFormPanel">
+    <!-- CARD FORM -->
+    <div class="form-panel" id="cardFormPanel">
       <h3 id="cardFormTitle">➕ Add New Download Card</h3>
       <div class="form-grid">
         <div class="form-field"><label>Name *</label><input type="text" id="fName" placeholder="e.g. CoolClient 3.0" /></div>
         <div class="form-field"><label>Version *</label><input type="text" id="fVersion" placeholder="e.g. 3.0" /></div>
         <div class="form-field"><label>Tag</label><select id="fTag"><option value="CLIENT">CLIENT</option><option value="HTML">HTML</option><option value="ZIP">ZIP</option><option value="TOOL">TOOL</option><option value="OTHER">OTHER</option></select></div>
         <div class="form-field"><label>File Type</label><select id="fFileType"><option value="ZIP">ZIP</option><option value="HTML">HTML</option><option value="EXE">EXE</option><option value="OTHER">OTHER</option></select></div>
-        <div class="form-field full"><label>Asset filename (exact filename in your repo) *</label><input type="text" id="fAsset" placeholder="e.g. CoolClient.zip" /></div>
+        <div class="form-field full"><label>Asset filename *</label><input type="text" id="fAsset" placeholder="e.g. CoolClient.zip" /></div>
         <div class="form-field full"><label>Description</label><textarea id="fDesc" placeholder="Short description..."></textarea></div>
         <div class="form-field full"><div class="checkbox-field"><input type="checkbox" id="fIsNew"><label for="fIsNew">Show "NEW" badge</label></div></div>
       </div>
@@ -290,30 +291,24 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
       </div>
     </div>
 
-    <!-- ===== CARDS LIST ===== -->
+    <!-- CARDS LIST -->
     <div class="section-header">
       <div style="display:flex;align-items:center;gap:0.75rem">
         <h2>Download Cards</h2>
-        <span class="card-count" id="cardCount">0 cards</span>
+        <span class="item-count" id="cardCount">0 cards</span>
       </div>
       <button class="btn-accent" id="addCardBtn">+ Add Card</button>
     </div>
-    <div class="cards-list" id="adminCardsList">
-      <div class="empty-state"><div>📭</div><p>No cards yet. Load from GitHub or add manually.</p></div>
+    <div class="drag-hint">⠿ Drag the handle to reorder cards</div>
+    <div class="drag-list" id="adminCardsList">
+      <div class="empty-state"><div>📭</div><p>No cards loaded yet.</p></div>
     </div>
 
-    <!-- ===== CHANGELOG ===== -->
+    <!-- CHANGELOG FORM -->
     <hr class="divider" style="margin:2rem 0">
-    <div class="section-header">
-      <div style="display:flex;align-items:center;gap:0.75rem">
-        <h2>Changelog Entries</h2>
-        <span class="card-count" id="clCount">0 entries</span>
-      </div>
-      <button class="btn-accent" id="addClBtn">+ Add Entry</button>
-    </div>
 
-    <div id="clFormPanel" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.25rem;display:none;animation:fadeUp 0.25s ease;">
-      <h3 id="clFormTitle" style="font-size:1rem;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);">➕ Add Changelog Entry</h3>
+    <div class="form-panel" id="clFormPanel">
+      <h3 id="clFormTitle">➕ Add Changelog Entry</h3>
       <div class="form-grid">
         <div class="form-field"><label>Date *</label><input type="date" id="clDate" /></div>
         <div class="form-field"><label>Version *</label><input type="text" id="clVersion" placeholder="e.g. v2.0" /></div>
@@ -326,7 +321,16 @@ body{background:var(--bg);color:var(--text);min-height:100vh;}
       </div>
     </div>
 
-    <div id="clList">
+    <!-- CHANGELOG LIST -->
+    <div class="section-header">
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <h2>Changelog Entries</h2>
+        <span class="item-count" id="clCount">0 entries</span>
+      </div>
+      <button class="btn-accent" id="addClBtn">+ Add Entry</button>
+    </div>
+    <div class="drag-hint">⠿ Drag to reorder — top of list = top of changelog page</div>
+    <div class="drag-list" id="clList">
       <div class="empty-state"><div>📋</div><p>No changelog entries yet.</p></div>
     </div>
 
@@ -450,7 +454,7 @@ document.getElementById('saveBanner').addEventListener('click', () => {
   siteConfig.banner = {
     enabled: document.getElementById('bannerEnabled').checked,
     message: document.getElementById('bannerMsg').value.trim(),
-    color:   document.getElementById('bannerColor').value
+    color: document.getElementById('bannerColor').value
   };
   markDirty();
   setStatus('bannerStatus', '✅ Banner saved! Publish to apply.', 'ok');
@@ -466,207 +470,231 @@ function getGH() {
   };
 }
 
-async function ghFetch(path, method='GET', body=null) {
+async function ghGet(path) {
   const { owner, repo, branch, token } = getGH();
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
-  const opts = { method, headers: { Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' } };
-  if(body) opts.body = JSON.stringify(body);
-  return fetch(method==='GET' ? url : `https://api.github.com/repos/${owner}/${repo}/contents/${path}`, opts);
-}
-
-async function getFileSha(path) {
-  const res = await ghFetch(path);
-  if(!res.ok) return null;
-  return (await res.json()).sha;
+  return fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`, {
+    headers: { Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json' }
+  });
 }
 
 async function commitFile(path, content, msg) {
-  const sha = await getFileSha(path);
-  const body = { message:`admin: ${msg}`, content: btoa(unescape(encodeURIComponent(content))), branch: getGH().branch };
+  const { owner, repo, branch, token } = getGH();
+  const shaRes = await ghGet(path);
+  const sha = shaRes.ok ? (await shaRes.json()).sha : null;
+  const body = { message:`admin: ${msg}`, content: btoa(unescape(encodeURIComponent(content))), branch };
   if(sha) body.sha = sha;
-  const res = await ghFetch(path, 'PUT', body);
+  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+    method:'PUT',
+    headers:{ Authorization:`Bearer ${token}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
+    body: JSON.stringify(body)
+  });
   if(!res.ok) { const e = await res.json(); throw new Error(e.message||res.status); }
 }
 
 async function loadFromGitHub() {
-  const { owner, repo, branch, token } = getGH();
+  const { owner, repo, token } = getGH();
   if(!owner || !repo || !token) { toast('⚙️ Enter GitHub settings to load data', 4000); return; }
   showLoading('Loading from GitHub…');
   try {
-    // Load all 3 files in parallel
-    const [cardsRes, configRes, clRes] = await Promise.all([
-      ghFetch('cards.json').catch(()=>null),
-      ghFetch('config.json').catch(()=>null),
-      ghFetch('changelog.json').catch(()=>null)
-    ]);
-    if(cardsRes?.ok) cards = JSON.parse(atob((await cardsRes.json()).content.replace(/\n/g,'')));
-    if(configRes?.ok) {
-      siteConfig = JSON.parse(atob((await configRes.json()).content.replace(/\n/g,'')));
-      loadBannerIntoUI();
-      loadSBIntoUI();
-    }
-    if(clRes?.ok) changelog = JSON.parse(atob((await clRes.json()).content.replace(/\n/g,'')));
-    renderCardsList();
-    renderClList();
+    const [cR, cfR, clR] = await Promise.all([ghGet('cards.json'), ghGet('config.json'), ghGet('changelog.json')]);
+    if(cR.ok)  cards     = JSON.parse(atob((await cR.json()).content.replace(/\n/g,'')));
+    if(cfR.ok) { siteConfig = JSON.parse(atob((await cfR.json()).content.replace(/\n/g,''))); loadBannerUI(); loadSBUI(); }
+    if(clR.ok) changelog = JSON.parse(atob((await clR.json()).content.replace(/\n/g,'')));
+    renderCards(); renderCl();
     toast('✅ Loaded from GitHub');
   } catch(e) { toast('❌ Load failed: '+e.message, 5000); }
   finally { hideLoading(); }
 }
 
-function loadBannerIntoUI() {
-  const b = siteConfig.banner || {};
+function loadBannerUI() {
+  const b = siteConfig.banner||{};
   document.getElementById('bannerEnabled').checked = !!b.enabled;
-  document.getElementById('bannerMsg').value = b.message || '';
-  document.getElementById('bannerColor').value = b.color || 'blue';
+  document.getElementById('bannerMsg').value = b.message||'';
+  document.getElementById('bannerColor').value = b.color||'blue';
   updateBannerPreview();
 }
-function loadSBIntoUI() {
-  const sb = siteConfig.supabase || {};
-  if(sb.url) { document.getElementById('sbUrl').value = sb.url; localStorage.setItem('dh_sb_url', sb.url); }
-  if(sb.anonKey) { document.getElementById('sbKey').value = sb.anonKey; localStorage.setItem('dh_sb_key', sb.anonKey); }
+function loadSBUI() {
+  const sb = siteConfig.supabase||{};
+  if(sb.url) { document.getElementById('sbUrl').value=sb.url; localStorage.setItem('dh_sb_url',sb.url); }
+  if(sb.anonKey) { document.getElementById('sbKey').value=sb.anonKey; localStorage.setItem('dh_sb_key',sb.anonKey); }
 }
 
 // ===== PUBLISH =====
-document.getElementById('publishBtn').addEventListener('click', publishAll);
-document.getElementById('discardBtn').addEventListener('click', () => {
-  if(!confirm('Discard all unsaved changes and reload from GitHub?')) return;
-  dirty = false; hideSaveBar(); loadFromGitHub();
-});
-
-async function publishAll() {
+document.getElementById('publishBtn').addEventListener('click', async () => {
   showLoading('Publishing to GitHub…');
   try {
-    await commitFile('cards.json', JSON.stringify(cards, null, 2), 'update cards.json');
-    await commitFile('config.json', JSON.stringify(siteConfig, null, 2), 'update config.json');
-    await commitFile('changelog.json', JSON.stringify(changelog, null, 2), 'update changelog.json');
-    dirty = false; hideSaveBar();
-    toast('🚀 Published! Site will update in ~30 seconds.');
+    await commitFile('cards.json', JSON.stringify(cards,null,2), 'update cards.json');
+    await commitFile('config.json', JSON.stringify(siteConfig,null,2), 'update config.json');
+    await commitFile('changelog.json', JSON.stringify(changelog,null,2), 'update changelog.json');
+    dirty=false; hideSaveBar();
+    toast('🚀 Published! Site updates in ~30 seconds.');
   } catch(e) { toast('❌ Publish failed: '+e.message, 6000); }
   finally { hideLoading(); }
+});
+
+document.getElementById('discardBtn').addEventListener('click', () => {
+  if(!confirm('Discard all unsaved changes and reload?')) return;
+  dirty=false; hideSaveBar(); loadFromGitHub();
+});
+
+// ===== GENERIC DRAG AND DROP =====
+function makeDraggable(listEl, dataArr, onReorder) {
+  let dragSrc = null;
+
+  function refresh() {
+    listEl.querySelectorAll('.drag-row').forEach((el, i) => {
+      el.setAttribute('draggable', 'true');
+
+      el.ondragstart = e => {
+        dragSrc = i;
+        setTimeout(() => el.classList.add('dragging'), 0);
+        e.dataTransfer.effectAllowed = 'move';
+      };
+
+      el.ondragend = () => {
+        el.classList.remove('dragging');
+        listEl.querySelectorAll('.drag-row').forEach(r => {
+          r.classList.remove('drag-over-top', 'drag-over-bottom');
+        });
+      };
+
+      el.ondragover = e => {
+        e.preventDefault();
+        listEl.querySelectorAll('.drag-row').forEach(r => r.classList.remove('drag-over-top','drag-over-bottom'));
+        const rect = el.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        el.classList.add(e.clientY < mid ? 'drag-over-top' : 'drag-over-bottom');
+      };
+
+      el.ondrop = e => {
+        e.preventDefault();
+        if(dragSrc === null || dragSrc === i) return;
+        const rect = el.getBoundingClientRect();
+        const mid = rect.top + rect.height / 2;
+        const insertAfter = e.clientY >= mid;
+        const [moved] = dataArr.splice(dragSrc, 1);
+        let target = i;
+        if(dragSrc < i) target = insertAfter ? i : i - 1;
+        else target = insertAfter ? i + 1 : i;
+        dataArr.splice(Math.max(0, Math.min(dataArr.length, target)), 0, moved);
+        dragSrc = null;
+        onReorder();
+        markDirty();
+      };
+    });
+  }
+
+  return { refresh };
 }
 
 // ===== CARDS =====
-function renderCardsList() {
+let cardDrag;
+
+function renderCards() {
   const list = document.getElementById('adminCardsList');
-  document.getElementById('cardCount').textContent = cards.length + ' card' + (cards.length!==1?'s':'');
-  if(!cards.length) { list.innerHTML = '<div class="empty-state"><div>📭</div><p>No cards yet.</p></div>'; return; }
+  document.getElementById('cardCount').textContent = cards.length + ' card'+(cards.length!==1?'s':'');
+  if(!cards.length) { list.innerHTML='<div class="empty-state"><div>📭</div><p>No cards yet.</p></div>'; return; }
+
   list.innerHTML = cards.map((c,i) => `
-    <div class="admin-card" draggable="true" data-index="${i}">
+    <div class="drag-row" data-index="${i}">
       <span class="drag-handle" title="Drag to reorder">⠿</span>
-      <div class="admin-card-info">
-        <h4><span class="admin-card-tag">${esc(c.tag)}</span>${esc(c.name)}${c.isNew?'<span class="new-badge" style="margin-left:0.4rem">NEW</span>':''}</h4>
-        <div class="admin-card-meta">v${esc(c.version)} &bull; ${esc(c.fileType)} &bull; ${esc(c.asset)}</div>
+      <div class="row-info">
+        <h4><span class="tag-pill tag-card">${esc(c.tag)}</span>${esc(c.name)}${c.isNew?'<span class="new-badge" style="margin-left:0.4rem">NEW</span>':''}</h4>
+        <p>v${esc(c.version)} &bull; ${esc(c.fileType)} &bull; ${esc(c.asset)}</p>
       </div>
-      <div class="admin-card-actions">
+      <div class="row-actions">
         <button class="btn-edit" onclick="editCard(${i})">✏️ Edit</button>
         <button class="btn-danger" onclick="deleteCard(${i})">🗑</button>
       </div>
     </div>
   `).join('');
-  initDragAndDrop();
+
+  if(!cardDrag) cardDrag = makeDraggable(list, cards, renderCards);
+  else cardDrag.refresh();
+  cardDrag.refresh();
 }
 
-// Drag and drop reorder
-let dragSrc = null;
-function initDragAndDrop() {
-  document.querySelectorAll('#adminCardsList .admin-card').forEach((el, i) => {
-    el.addEventListener('dragstart', e => {
-      dragSrc = i;
-      setTimeout(() => el.classList.add('dragging'), 0);
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    el.addEventListener('dragend', () => {
-      el.classList.remove('dragging');
-      document.querySelectorAll('.admin-card').forEach(c => c.classList.remove('drag-over'));
-    });
-    el.addEventListener('dragover', e => {
-      e.preventDefault();
-      document.querySelectorAll('.admin-card').forEach(c => c.classList.remove('drag-over'));
-      el.classList.add('drag-over');
-    });
-    el.addEventListener('drop', e => {
-      e.preventDefault();
-      if(dragSrc === null || dragSrc === i) return;
-      const [moved] = cards.splice(dragSrc, 1);
-      cards.splice(i, 0, moved);
-      renderCardsList();
-      markDirty();
-      dragSrc = null;
-    });
-  });
-}
-
-// Add card
 document.getElementById('addCardBtn').addEventListener('click', () => {
-  editingCardIdx = null;
-  clearCardForm();
-  document.getElementById('cardFormTitle').textContent = '➕ Add New Download Card';
-  document.getElementById('saveCardBtn').textContent = 'Add Card';
-  document.getElementById('cardFormPanel').style.display = 'block';
+  editingCardIdx=null; clearCardForm();
+  document.getElementById('cardFormTitle').textContent='➕ Add New Download Card';
+  document.getElementById('saveCardBtn').textContent='Add Card';
+  document.getElementById('cardFormPanel').style.display='block';
   document.getElementById('cardFormPanel').scrollIntoView({behavior:'smooth',block:'start'});
   document.getElementById('fName').focus();
 });
 document.getElementById('cancelCardBtn').addEventListener('click', () => { document.getElementById('cardFormPanel').style.display='none'; clearCardForm(); editingCardIdx=null; });
 
 function clearCardForm() {
-  ['fName','fVersion','fAsset','fDesc'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('fTag').value='CLIENT';
-  document.getElementById('fFileType').value='ZIP';
+  ['fName','fVersion','fAsset','fDesc'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fTag').value='CLIENT'; document.getElementById('fFileType').value='ZIP';
   document.getElementById('fIsNew').checked=false;
 }
 
 function editCard(i) {
-  const c = cards[i]; editingCardIdx = i;
-  document.getElementById('fName').value    = c.name;
-  document.getElementById('fVersion').value = c.version;
-  document.getElementById('fTag').value     = c.tag;
-  document.getElementById('fFileType').value= c.fileType;
-  document.getElementById('fAsset').value   = c.asset;
-  document.getElementById('fDesc').value    = c.description;
-  document.getElementById('fIsNew').checked = !!c.isNew;
-  document.getElementById('cardFormTitle').textContent = '✏️ Edit: '+c.name;
-  document.getElementById('saveCardBtn').textContent = 'Save Changes';
+  const c=cards[i]; editingCardIdx=i;
+  document.getElementById('fName').value=c.name; document.getElementById('fVersion').value=c.version;
+  document.getElementById('fTag').value=c.tag; document.getElementById('fFileType').value=c.fileType;
+  document.getElementById('fAsset').value=c.asset; document.getElementById('fDesc').value=c.description;
+  document.getElementById('fIsNew').checked=!!c.isNew;
+  document.getElementById('cardFormTitle').textContent='✏️ Edit: '+c.name;
+  document.getElementById('saveCardBtn').textContent='Save Changes';
   document.getElementById('cardFormPanel').style.display='block';
   document.getElementById('cardFormPanel').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 document.getElementById('saveCardBtn').addEventListener('click', () => {
-  const name = document.getElementById('fName').value.trim();
-  const ver  = document.getElementById('fVersion').value.trim();
-  const asset= document.getElementById('fAsset').value.trim();
+  const name=document.getElementById('fName').value.trim();
+  const ver=document.getElementById('fVersion').value.trim();
+  const asset=document.getElementById('fAsset').value.trim();
   if(!name||!ver||!asset) { toast('❌ Name, Version, and Asset are required'); return; }
-  const card = { id: name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''), tag:document.getElementById('fTag').value, name, version:ver, fileType:document.getElementById('fFileType').value, description:document.getElementById('fDesc').value.trim(), asset };
-  if(document.getElementById('fIsNew').checked) card.isNew = true;
+  const card={ id:name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''), tag:document.getElementById('fTag').value, name, version:ver, fileType:document.getElementById('fFileType').value, description:document.getElementById('fDesc').value.trim(), asset };
+  if(document.getElementById('fIsNew').checked) card.isNew=true;
   if(editingCardIdx!==null) { cards[editingCardIdx]=card; toast('✅ Card updated'); }
   else { cards.push(card); toast('✅ Card added'); }
-  renderCardsList(); markDirty();
+  renderCards(); markDirty();
   document.getElementById('cardFormPanel').style.display='none'; clearCardForm(); editingCardIdx=null;
 });
 
 function deleteCard(i) {
   if(!confirm(`Delete "${cards[i].name}"?`)) return;
-  const name = cards[i].name;
-  cards.splice(i,1); renderCardsList(); markDirty(); toast(`🗑 "${name}" deleted`);
+  const name=cards[i].name; cards.splice(i,1); renderCards(); markDirty(); toast(`🗑 "${name}" deleted`);
 }
 
 // ===== CHANGELOG =====
-function renderClList() {
+let clDrag;
+
+function renderCl() {
   const list = document.getElementById('clList');
-  document.getElementById('clCount').textContent = changelog.length + ' entr' + (changelog.length===1?'y':'ies');
+  document.getElementById('clCount').textContent = changelog.length+' entr'+(changelog.length===1?'y':'ies');
   if(!changelog.length) { list.innerHTML='<div class="empty-state"><div>📋</div><p>No entries yet.</p></div>'; return; }
-  const sorted = [...changelog].map((e,i)=>({...e,_i:i})).sort((a,b)=>new Date(b.date)-new Date(a.date));
-  list.innerHTML = sorted.map(e => {
+
+  list.innerHTML = changelog.map((e,i) => {
     const d = new Date(e.date+'T12:00:00').toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
-    return `<div class="cl-entry"><div class="cl-entry-info"><h4><span class="cl-version">${esc(e.version)}</span>${esc(e.title)}</h4><p>${esc(d)} &bull; ${e.items.length} item${e.items.length!==1?'s':''}</p></div><div style="display:flex;gap:0.4rem;flex-shrink:0"><button class="btn-edit" onclick="editCl(${e._i})">✏️</button><button class="btn-danger" onclick="deleteCl(${e._i})">🗑</button></div></div>`;
+    return `
+      <div class="drag-row" data-index="${i}">
+        <span class="drag-handle" title="Drag to reorder">⠿</span>
+        <div class="row-info">
+          <h4><span class="tag-pill tag-cl">${esc(e.version)}</span>${esc(e.title)}</h4>
+          <p>${esc(d)} &bull; ${e.items.length} item${e.items.length!==1?'s':''}</p>
+        </div>
+        <div class="row-actions">
+          <button class="btn-edit" onclick="editCl(${i})">✏️</button>
+          <button class="btn-danger" onclick="deleteCl(${i})">🗑</button>
+        </div>
+      </div>
+    `;
   }).join('');
+
+  if(!clDrag) clDrag = makeDraggable(list, changelog, renderCl);
+  else clDrag.refresh();
+  clDrag.refresh();
 }
 
 document.getElementById('addClBtn').addEventListener('click', () => {
-  editingClIdx = null;
-  clearClForm();
-  document.getElementById('clDate').value = new Date().toISOString().split('T')[0];
-  document.getElementById('clFormTitle').textContent = '➕ Add Changelog Entry';
-  document.getElementById('saveClBtn').textContent = 'Add Entry';
+  editingClIdx=null; clearClForm();
+  document.getElementById('clDate').value=new Date().toISOString().split('T')[0];
+  document.getElementById('clFormTitle').textContent='➕ Add Changelog Entry';
+  document.getElementById('saveClBtn').textContent='Add Entry';
   document.getElementById('clFormPanel').style.display='block';
   document.getElementById('clFormPanel').scrollIntoView({behavior:'smooth',block:'start'});
 });
@@ -677,53 +705,49 @@ function clearClForm() {
 }
 
 function editCl(i) {
-  const e = changelog[i]; editingClIdx = i;
-  document.getElementById('clDate').value    = e.date;
-  document.getElementById('clVersion').value = e.version;
-  document.getElementById('clTitle').value   = e.title;
-  document.getElementById('clItems').value   = e.items.join('\n');
-  document.getElementById('clFormTitle').textContent = '✏️ Edit Entry';
-  document.getElementById('saveClBtn').textContent = 'Save Changes';
+  const e=changelog[i]; editingClIdx=i;
+  document.getElementById('clDate').value=e.date; document.getElementById('clVersion').value=e.version;
+  document.getElementById('clTitle').value=e.title; document.getElementById('clItems').value=e.items.join('\n');
+  document.getElementById('clFormTitle').textContent='✏️ Edit Entry';
+  document.getElementById('saveClBtn').textContent='Save Changes';
   document.getElementById('clFormPanel').style.display='block';
   document.getElementById('clFormPanel').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 document.getElementById('saveClBtn').addEventListener('click', () => {
-  const date    = document.getElementById('clDate').value;
-  const version = document.getElementById('clVersion').value.trim();
-  const title   = document.getElementById('clTitle').value.trim();
-  const items   = document.getElementById('clItems').value.split('\n').map(s=>s.trim()).filter(Boolean);
+  const date=document.getElementById('clDate').value;
+  const version=document.getElementById('clVersion').value.trim();
+  const title=document.getElementById('clTitle').value.trim();
+  const items=document.getElementById('clItems').value.split('\n').map(s=>s.trim()).filter(Boolean);
   if(!date||!version||!title) { toast('❌ Date, Version, and Title are required'); return; }
-  const entry = { id:'cl-'+Date.now(), date, version, title, items };
+  const entry={ id:'cl-'+Date.now(), date, version, title, items };
   if(editingClIdx!==null) { changelog[editingClIdx]=entry; toast('✅ Entry updated'); }
   else { changelog.push(entry); toast('✅ Entry added'); }
-  renderClList(); markDirty();
+  renderCl(); markDirty();
   document.getElementById('clFormPanel').style.display='none'; clearClForm(); editingClIdx=null;
 });
 
 function deleteCl(i) {
   if(!confirm('Delete this changelog entry?')) return;
-  changelog.splice(i,1); renderClList(); markDirty(); toast('🗑 Entry deleted');
+  changelog.splice(i,1); renderCl(); markDirty(); toast('🗑 Entry deleted');
 }
 
-// ===== DIRTY STATE =====
+// ===== DIRTY / SAVE BAR =====
 function markDirty() { dirty=true; document.getElementById('saveBar').classList.add('visible'); }
 function hideSaveBar() { document.getElementById('saveBar').classList.remove('visible'); }
 
 // ===== HELPERS =====
-function setStatus(id, msg, cls) {
-  const el = document.getElementById(id);
-  el.textContent = msg; el.className = 'settings-status'+(cls?' '+cls:'');
+function setStatus(id,msg,cls) {
+  const el=document.getElementById(id);
+  el.textContent=msg; el.className='settings-status'+(cls?' '+cls:'');
   setTimeout(()=>{el.textContent='';el.className='settings-status';},3500);
 }
-
 function showLoading(msg) { document.getElementById('loadingMsg').textContent=msg||'Loading…'; document.getElementById('loadingOverlay').classList.add('show'); }
 function hideLoading() { document.getElementById('loadingOverlay').classList.remove('show'); }
 
-const toastEl = document.getElementById('adminToast');
+const toastEl=document.getElementById('adminToast');
 let toastT;
-function toast(msg, dur=3500) { toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>toastEl.classList.remove('show'),dur); }
-
+function toast(msg,dur=3500) { toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>toastEl.classList.remove('show'),dur); }
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 </script>
 </body>
